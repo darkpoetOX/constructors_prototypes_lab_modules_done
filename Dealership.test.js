@@ -10,13 +10,30 @@ describe('Car', () => {
         expect(actual).toBe(expected);
     });
 
-    test('can add a car to the stock', () => {
-        const dealership = new Dealership("James Vehicles", 100)
-        const car = new Car("Tesla", 50000, "Electric")
-        dealership.addCarToStock(car); //adding a 
-        expected = 1;
-        actual = dealership.countCarsInStock();
-        expect(actual).toBe(expected);
+    // test('can add a car to the stock', () => {
+    //     const dealership = new Dealership("James Vehicles", 100)
+    //     const car = new Car("Tesla", 50000, "Electric")
+    //     dealership.addCarToStock(car); //adding a 
+    //     expected = 1;
+    //     actual = dealership.countCarsInStock();
+    //     expect(actual).toBe(expected);
+    // });
+    
+    test('can add cars to stock but no more than full capacity', () => {
+        const dealership = new Dealership("Cars4U", 3)
+        const firstCar = new Car("Alfa Romeo", 60000, "Electric");
+        const secondCar = new Car("Land Rover", 72000, "Petrol");
+        const thirdCar = new Car("Hyundai", 34000, "Diesel");
+        const fourthCar = new Car("Ford", 29000, "Diesel");        
+        
+        const message1 = dealership.addCarToStock(firstCar);
+        const message2 = dealership.addCarToStock(secondCar); 
+        const message3  = dealership.addCarToStock(thirdCar);
+        const message4  = dealership.addCarToStock(fourthCar);
+
+        expected = ["Car added to stock list.", "Car added to stock list.", "Car added to stock list.", "We cannot take anymore cars."];
+        actual = [message1, message2, message3, message4];
+        expect(actual).toEqual(expected);
     });
 
     test('can get car manufacturer list', () => {
