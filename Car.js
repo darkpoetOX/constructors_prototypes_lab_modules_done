@@ -29,5 +29,4 @@ Car.prototype.getEngineType = function(){
     return this.engineType
 }
 
-// this exposes User to other files
 module.exports = Car;
