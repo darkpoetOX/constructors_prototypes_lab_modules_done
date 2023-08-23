@@ -26,9 +26,9 @@ Dealership.prototype.findCarsFromManufacturer = function(manufacturer){ // takes
     return this.stock.filter(car => car.getManufacturer() === manufacturer); // output is a filtered array based on input manufacturer
 };
 
-Dealership.prototype.sumTotalStocklValue = function(){
+Dealership.prototype.sumTotalStockValue = function(){
     return this.stock.reduce((runningTotal, car) => {
-        runningTotal + car.getPrice();
+        return runningTotal + car.getPrice();
     }, 0);
 };
 
